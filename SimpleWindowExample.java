@@ -22,11 +22,20 @@ public class SimpleWindowExample {
             }
 
             private void drawRectangle(Graphics g) {
+                int windowWidth = getWidth();
+                int windowHeight = getHeight();
+
+                int rectangleWidth = 800;
+                int rectangleHeight = 300;
+
+                int x = (windowWidth - rectangleWidth) / 2;
+                int y = (windowHeight - rectangleHeight) / 2;
+
                 // Set the color of the rectangle
                 g.setColor(Color.BLUE);
 
-                // Draw a rectangle at coordinates (50, 50) with width 100 and height 80
-                g.fillRect(50, 50, 100, 80);
+                // Draw a rectangle at the calculated coordinates
+                g.fillRect(x, y, rectangleWidth, rectangleHeight);
             }
         };
 
