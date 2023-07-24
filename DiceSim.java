@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.util.Scanner;
 
 class DiceSim {
 
@@ -42,33 +43,20 @@ class DiceSim {
 
     public static void rollD20() throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
         int random_number = rand.nextInt(20) + 1; // Add 1 to get a number between 1 and 20
         System.out.println("\nThe Result is " + random_number + "\n");
         System.out.print("Do you want to roll this dice again? (y/n)\n");
-        System.out.flush(); 
+        scanner.nextLine();
+        if (userInput.equals("n")) { // Check if the user entered 'n'
+            // Code will continue executing if the user entered 'n'
+            System.out.println("You have continued!"); // Print a message to the console
+        } else {
+            System.out.println("You did not enter 'n'. Program will not continue."); // Print a message if user input is not 'n'
+        }
+
 
     }
-    //public static void rollD20(BufferedReader br) throws IOException {
-    //    boolean exit = false; 
-    //    String input = "";
-    //    
-    //    while (!exit) {
-    //        input = br.readLine().trim();
-    //        Random rand = new Random();
-    //        int random_number = rand.nextInt(20) + 1; // Add 1 to get a number between 1 and 20
-    //        System.out.println("\nThe Result is " + random_number + "\n");
-    //        System.out.print("Do you want to roll this dice again? (y/n)\n");
-    //        System.out.flush(); // Flush the output stream to force immediate display
-    //
-    //        if (input.equals("y")) {
-    //            // continue rolling
-    //        } else if (input.equals("n")) {
-    //            exit = true;
-    //        } else {
-    //            System.out.println("Invalid input. Please enter 'y' or 'n'.\n");
-    //        }
-    //    }
-    //}
+    
 }
