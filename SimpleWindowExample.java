@@ -1,7 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+
 
 public class SimpleWindowExample {
 
@@ -10,6 +17,7 @@ public class SimpleWindowExample {
     private static final int circleDiameter = 60;
     private static HashSet<Integer> pressedKeys = new HashSet<>();
     private static JPanel panel;
+    private static BufferedImage circleImage;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> createAndShowWindow());
@@ -20,10 +28,16 @@ public class SimpleWindowExample {
     }
 
     private static void createAndShowWindow() {
-        JFrame frame = new JFrame("Smooth Circle Move Example");
+        JFrame frame = new JFrame("SAMMMMMMMM Slide");
         frame.setSize(1200, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+
+        try {
+             circleImage = ImageIO.read(new File("SAMMMMMMMMMMMMMMMMMM.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Create a custom JPanel where we will draw the rectangle
         panel = new JPanel() {
@@ -54,12 +68,15 @@ public class SimpleWindowExample {
             }
 
             private void drawCircle(Graphics g) {
-                // Set the color of the circle
-                g.setColor(new Color(227, 76, 16));
-
-                // Draw a filled circle at the specified position
-                g.fillOval(circleX, circleY, circleDiameter, circleDiameter);
+                
+                int imagecorrection = 2;
+                int newWidth = (int) (circleDiameter * imagecorrection * 1.4);
+                int newHeight = (int) (circleDiameter * imagecorrection * 1);
+            
+                // Draw the image at the specified position with the new width and height
+                g.drawImage(circleImage, circleX, circleY, newWidth, newHeight, null);
             }
+            
         };
 
         // Add the custom JPanel to the JFrame
