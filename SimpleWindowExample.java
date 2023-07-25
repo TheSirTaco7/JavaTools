@@ -19,23 +19,43 @@ public class SimpleWindowExample {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 drawRectangle(g);
+                drawCircle(g);
+                this.setBackground(new Color(75, 145, 13));
             }
 
             private void drawRectangle(Graphics g) {
                 int windowWidth = getWidth();
                 int windowHeight = getHeight();
 
-                int rectangleWidth = 800;
-                int rectangleHeight = 300;
+                // Calculate the size of the rectangle based on percentages (96% of width, 96% of height)
+                int rectangleWidth = (int) (windowWidth * 0.96);
+                int rectangleHeight = (int) (windowHeight * 0.96);
 
                 int x = (windowWidth - rectangleWidth) / 2;
                 int y = (windowHeight - rectangleHeight) / 2;
 
                 // Set the color of the rectangle
-                g.setColor(Color.BLUE);
+                g.setColor(new Color(111, 94, 255));
 
-                // Draw a rectangle at the calculated coordinates
+                // Draw the rectangle at the calculated coordinates
                 g.fillRect(x, y, rectangleWidth, rectangleHeight);
+            }
+
+            
+            private void drawCircle(Graphics g) {
+                int windowWidth = getWidth();
+                int windowHeight = getHeight();
+
+                int circleDiameter = (int) (windowHeight * 0.1);
+
+                int x = (windowWidth - circleDiameter) / 2;
+                int y = (windowHeight - circleDiameter) / 2;
+
+                // Set the color of the circle
+                g.setColor(new Color(227, 76, 16));
+
+                // Draw a circle at the calculated coordinates
+                g.fillOval(x, y, circleDiameter, circleDiameter);
             }
         };
 
